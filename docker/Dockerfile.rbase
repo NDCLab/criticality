@@ -1,0 +1,17 @@
+FROM r-base:4.0.3
+
+# Create the working dir
+RUN bash -c "mkdir -p /workspace/{project_name,input,output,tmp}"
+## Switch to workspace
+WORKDIR /workspace
+
+# Install dependencies
+## Copy build files
+COPY ./build/build_rbase.sh ./tmp/
+COPY ./build/r_packages-dev.R ./tmp/
+COPY ./ ./tmp
+## Run build script
+RUN cd ./tmp/ && bash ./build_rbase.sh
+
+# Clean up files
+RUN bash -c "rm -r ./tmp"

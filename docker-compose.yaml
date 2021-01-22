@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  python-env:
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile.python
+    tty: true
+    volumes:
+      - "./data/input:/workspace/input/"
+      - "./data/output:/workspace/output/"
+      - "./project_name:/workspace/project_name/"
+  rbase-env:
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile.rbase
+    tty: true
+    volumes:
+      - "./data/input:/workspace/input/"
+      - "./data/output:/workspace/output/"
+      - "./project_name:/workspace/project_name/"

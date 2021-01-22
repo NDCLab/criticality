@@ -1,0 +1,17 @@
+FROM python:3.8
+
+# Create the working dir
+RUN bash -c "mkdir -p /workspace/{project_name,input,output,tmp}"
+## Switch to workspace
+WORKDIR /workspace
+
+# Install dependencies
+## Copy build files
+COPY ./build/build_python.sh ./tmp/
+COPY ./build/requirements-dev.txt ./tmp/
+COPY ./ ./tmp/
+## Run build script
+RUN cd ./tmp && bash ./build_python.sh
+
+# Clean up files
+RUN bash -c "rm -r ./tmp"
