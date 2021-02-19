@@ -18,6 +18,7 @@ entrypoints==0.3
 etelemetry==0.2.2
 filelock==3.0.12
 flatbuffers==1.12
+freesurfer-surface==1.2.0
 gast==0.3.3
 google-auth==1.25.0
 google-auth-oauthlib==0.4.2
